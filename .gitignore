@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environment
+Lib/
+Scripts/
+share/
+pyvenv.cfg
+.lock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data files (never commit raw data)
+*.csv
+!examples/*.csv
+*.json
+*.xlsx
+*.pbix
+
+# Jupyter notebooks (contain inline data)
+*.ipynb
+
+# Cache
+CACHEDIR.TAG
+.cache/

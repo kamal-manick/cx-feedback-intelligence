@@ -1,0 +1,11 @@
+word,score,rationale
+platform,2.0,Positive in evaluation context -- customers mention platform when praising capability
+great,3.5,Strong positive -- amplified over VADER default to match domain enthusiasm level
+flexible,2.5,Strongly positive in enterprise context -- platform flexibility is high-value attribute
+licensing,-3.4,Strongly negative -- customers rarely mention licensing unless complaining
+expensive,-3.4,Strongly negative -- direct expression of cost dissatisfaction
+pricing,-3.4,Strongly negative -- pricing mentions in NPS feedback are almost always complaints
+cost,-2.5,Negative -- cost references in feedback context signal dissatisfaction
+issues,-2.5,Negative -- signals ongoing problems rather than neutral discussion
+better,-1.5,Mildly negative -- usually appears as "should be better" or "could be better"
+improve,-2.5,Negative -- appears as "needs to improve" not as "has improved"

@@ -1,0 +1,7 @@
+survey_date,response_id,nps_score,comment,nps_category,region,segment
+2023-03-15,RESP-001,9,"The platform is excellent for automation and the team has been very responsive to our needs.",Promoter,North America,Enterprise
+2023-04-22,RESP-002,3,"Licensing costs are far too high and the pricing model is not transparent. We are reconsidering our investment.",Detractor,EMEA,Mid-Market
+2023-05-10,RESP-003,7,"Good product overall; however, the support response times could be much better. Documentation is lacking.",Passive,APAC,Enterprise
+2023-06-18,RESP-004,10,"Amazing platform. Robust, scalable, and the customization options are outstanding. Would highly recommend.",Promoter,North America,Strategic
+2023-07-03,RESP-005,5,"The product has potential but implementation was difficult and expensive. Our account manager was helpful though.",Passive,EMEA,Enterprise
+2023-08-14,RESP-006,2,"Terrible experience. The system is unreliable and support tickets take weeks to resolve. Very frustrated.",Detractor,APAC,Mid-Market
