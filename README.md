@@ -116,16 +116,14 @@ Customer feedback is full of typos ("flexability"), abbreviations ("OOB" for out
 ## Insights Dashboard
 
 The pipeline output feeds a Power BI dashboard that visualizes:
-- Sentiment distribution by year and quarter
-- Topic frequency breakdown (what customers talk about most)
-- Directional topic analysis (which areas are "good" vs. "bad")
-- Drill-down by region, segment, and account tier
+- NPS score distribution across a 5-year trend
+- Top 2 pain points and their 5-year trend
+- NPS trend by customer revenue band over 5 years
+- Topic mention breakdown filtered by selected revenue band
 
 ![Dashboard Preview](docs/visuals/dashboard-preview.png)
 
 > *The screenshot above uses synthetic data. The production dashboard processes 35,000+ real survey responses.*
-
-See [docs/visuals/](docs/visuals/) for details on the dashboard design.
 
 ---
 
