@@ -3,40 +3,38 @@
 Shows how data transforms as it moves through each pipeline stage.
 
 ```mermaid
-graph LR
+graph TD
     subgraph "Stage 1: Extraction"
         A1["Survey Platform API"] -->|"JSON"| A2["Raw JSON Files<br/>~10K records/file"]
     end
 
+    A2 -->|"Load & merge"| B1
+
     subgraph "Stage 2: Ingestion"
-        A2 -->|"Load & merge"| B1["Consolidated DataFrame<br/>~35K rows"]
-        B1 -->|"Filter non-blank<br/>comments"| B2["Comments DataFrame<br/>~20K rows"]
-        B2 -->|"Clean HTML entities<br/>Normalize columns"| B3["Cleaned DataFrame"]
+        B1["Consolidated DataFrame<br/>~35K rows"] -->|"Filter blanks"| B2["Comments DataFrame<br/>~20K rows"]
+        B2 -->|"Clean & normalize"| B3["Cleaned DataFrame"]
     end
 
-    subgraph "Stage 3: Sentence Splitting"
-        B3 -->|"spaCy custom<br/>boundaries"| C1["Atomic Statements<br/>~34K rows"]
+    B3 -->|"spaCy custom boundaries"| C1
+
+    subgraph "Stage 3-6: NLP Pipeline"
+        C1["Atomic Statements<br/>~34K rows"] -->|"VADER + custom lexicon"| D1["+ sentiscore, sentcategory"]
+        D1 -->|"spaCy Matcher"| E1["+ topic set"]
+        E1 -->|"NPS score x sentiment"| F1["+ directional labels"]
     end
 
-    subgraph "Stage 4: Sentiment"
-        C1 -->|"VADER +<br/>custom lexicon"| D1["+ sentiscore<br/>+ sentcategory"]
-    end
-
-    subgraph "Stage 5: Topics"
-        D1 -->|"spaCy Matcher<br/>keyword patterns"| E1["+ topic set<br/>{product, support, ...}"]
-    end
-
-    subgraph "Stage 6: Mapping"
-        E1 -->|"NPS score ×<br/>text sentiment"| F1["+ directional labels<br/>{product is good, ...}"]
-    end
+    F1 -->|"Aggregate to response level"| G1
 
     subgraph "Stage 7: Export"
-        F1 -->|"Aggregate to<br/>response level"| G1["Final DataFrame<br/>~35K rows + topics"]
-        G1 -->|"Write"| G2["Excel Export<br/>2 sheets"]
+        G1["Final DataFrame<br/>~35K rows + topics"] -->|"Write"| G2["Excel Export<br/>2 sheets"]
     end
 
     style A1 fill:#fff3e0
     style G2 fill:#e8f5e9
+    style C1 fill:#e1f5fe
+    style D1 fill:#e1f5fe
+    style E1 fill:#e1f5fe
+    style F1 fill:#e1f5fe
 ```
 
 ## Row Count Transformation

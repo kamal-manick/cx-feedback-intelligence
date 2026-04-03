@@ -31,15 +31,19 @@ A score of 6 tells you a customer is a detractor, but not *why*. Leadership need
 ## Architecture Overview
 
 ```mermaid
-graph LR
-    A[Survey Platform API] -->|JSON export| B[Data Extraction]
-    B -->|Raw JSON files| C[Data Ingestion]
-    C -->|Consolidated & cleaned CSV| D[NLP Pipeline]
-    D -->|Sentence Segmentation| E[Sentiment Analysis]
-    E -->|Scored sentences| F[Topic Categorization]
-    F -->|Categorized feedback| G[Topic-Sentiment Mapping]
-    G -->|Directional labels| H[Data Transformation]
-    H -->|Structured export| I[BI Dashboard]
+graph TD
+    A[Survey Platform API] -->|"JSON export"| B[Data Extraction]
+    B -->|"Raw JSON files"| C[Data Ingestion]
+    C -->|"Cleaned DataFrame"| D[Sentence Segmentation]
+
+    subgraph NLP Pipeline
+        D -->|"Atomic statements"| E[Sentiment Analysis]
+        E -->|"Scored sentences"| F[Topic Categorization]
+        F -->|"Categorized feedback"| G[Topic-Sentiment Mapping]
+    end
+
+    G -->|"Directional labels"| H[Data Transformation]
+    H -->|"Structured export"| I[BI Dashboard]
 
     style D fill:#e1f5fe
     style E fill:#e1f5fe
